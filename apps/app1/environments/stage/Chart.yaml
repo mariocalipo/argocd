@@ -4,4 +4,5 @@ version: 0.1.0
 description: A Helm chart for deploying Kubernetes resources
 dependencies:
   - name: common-chart
+    version: 0.1.0
     repository: "file://../../../../common/charts/"
