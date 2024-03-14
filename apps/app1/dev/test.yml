@@ -1,0 +1,15 @@
+# app1-dev-resource.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-dev-service
+  labels:
+    app: app1
+    environment: dev
+spec:
+  selector:
+    app: app1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
