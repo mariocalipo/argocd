@@ -1,5 +1,4 @@
-environmentOptions:
-  - dev
-  - uat
-  - prod
-  - stage
+environment: dev
+environment: uat
+environment: prod
+environment: stage
