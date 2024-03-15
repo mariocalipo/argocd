@@ -1,4 +1,2 @@
 environment: dev
-environment: uat
-environment: prod
-environment: stage
+replicas: 2
