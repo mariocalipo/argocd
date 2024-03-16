@@ -8,7 +8,7 @@ spec:
       repoURL: https://github.com/mariocalipo/argocd.git
       revision: HEAD
       directories:
-      - path: main/*
+      - path: apps/**/* 
   template:
     metadata:
       name: '{{path.basename}}'
