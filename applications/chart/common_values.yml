@@ -1,9 +1,0 @@
-environments:
-  dev:
-    environment: dev
-  uat:
-    environment: uat
-  prod:
-    environment: prod
-  stage:
-    environment: stage
