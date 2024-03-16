@@ -9,13 +9,13 @@ vars:
       fieldref:
         fieldpath: data.environment
 resources:
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+  - ../../../common/deployment.yaml
+  - ../../../common/service.yaml
+  - ../../../common/ingress.yaml
 patchesStrategicMerge:
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+  - ../../../common/deployment.yaml
+  - ../../../common/service.yaml
+  - ../../../common/ingress.yaml
 configMapGenerator:
   - name: app2-us1-uat
     literals:

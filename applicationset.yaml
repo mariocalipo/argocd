@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-applicationset
+spec:
+  generators:
+    - applicationSetGenerator:
+        components:
+          - name: app1-dev
+            namespace: app1-dev
+            version: v1.0.0
+          - name: app1-prod
+            namespace: app1-prod
+            version: v1.0.0
+          - name: app1-stage
+            namespace: app1-stage
+            version: v1.0.0
+          - name: app1-uat
+            namespace: app1-uat
+            version: v1.0.0
+          - name: app2-dev
+            namespace: app2-dev
+            version: v1.0.0
+          - name: app2-prod
+            namespace: app2-prod
+            version: v1.0.0
+          - name: app2-stage
+            namespace: app2-stage
+            version: v1.0.0
+          - name: app2-uat
+            namespace: app2-uat
+            version: v1.0.0
+  template:
+    metadata:
+      name: '{{.name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/mariocalipo/argocd
+        targetRevision: HEAD
+        path: main
+        kustomize:
+          image: kustomize/kustomize:v4.4.0
+          args:
+            - build
+            - .
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.name}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      preSync:
+        - command:
+            - kubectl
+            - create
+            - namespace
+            - '{{.name}}'

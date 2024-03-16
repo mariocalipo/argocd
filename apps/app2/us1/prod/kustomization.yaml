@@ -4,19 +4,19 @@ vars:
   - name: environment
     objref:
       kind: ConfigMap
-      name: app2-us1-prod
+      name: app2-us1-stage
       apiVersion: v1
       fieldref:
         fieldpath: data.environment
 resources:
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+  - ../../../common/deployment.yaml
+  - ../../../common/service.yaml
+  - ../../../common/ingress.yaml
 patchesStrategicMerge:
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+  - ../../../common/deployment.yaml
+  - ../../../common/service.yaml
+  - ../../../common/ingress.yaml
 configMapGenerator:
-  - name: app2-us1-prod
+  - name: app2-us1-stage
     literals:
-      - environment=us1-prod
+      - environment=us1-stage
