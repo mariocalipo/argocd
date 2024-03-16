@@ -8,10 +8,10 @@ spec:
       repoURL: https://github.com/mariocalipo/argocd.git
       revision: HEAD
       directories:
-      - path: apps/**/* 
+      - path: apps/* # Alteração no caminho para incluir os diretórios de app1 e app2
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.dirname}}-{{path.basename}}' # Alteração no nome para incluir o nome do diretório pai (app1 ou app2)
     spec:
       project: default
       source:
@@ -20,4 +20,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{path.basename}}' # O namespace será baseado no nome do diretório filho (dev, prod, stage, uat)
