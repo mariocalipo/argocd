@@ -2,22 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: argo-projects
+  namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
       repoURL: https://github.com/mariocalipo/argocd.git
       revision: HEAD
       directories:
-      - path: apps/* # Alteração no caminho para incluir os diretórios de app1 e app2
+      - path: apps/app1/us1/*
+      - path: apps/app2/us1/*
   template:
     metadata:
-      name: '{{path.dirname}}-{{path.basename}}' # Alteração no nome para incluir o nome do diretório pai (app1 ou app2)
+      name: '{{.path.basename}}'
     spec:
-      project: default
+      project: "default"
       source:
         repoURL: https://github.com/mariocalipo/argocd.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: '{{.path.path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}' # O namespace será baseado no nome do diretório filho (dev, prod, stage, uat)
+        namespace: '{{.path.basename}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
