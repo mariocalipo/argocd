@@ -1,59 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: my-applicationset
+  name: argo-projects
 spec:
   generators:
-    - applicationSetGenerator:
-        components:
-          - name: app1-dev
-            namespace: app1-dev
-            version: v1.0.0
-          - name: app1-prod
-            namespace: app1-prod
-            version: v1.0.0
-          - name: app1-stage
-            namespace: app1-stage
-            version: v1.0.0
-          - name: app1-uat
-            namespace: app1-uat
-            version: v1.0.0
-          - name: app2-dev
-            namespace: app2-dev
-            version: v1.0.0
-          - name: app2-prod
-            namespace: app2-prod
-            version: v1.0.0
-          - name: app2-stage
-            namespace: app2-stage
-            version: v1.0.0
-          - name: app2-uat
-            namespace: app2-uat
-            version: v1.0.0
+  - git:
+      # git repository to get the variables from
+      repoURL: https://github.com/mariocalipo/argocd
+      # branch used to get the variables from 
+      revision: HEAD
+      directories:
+      # path to the directory that includes directories to read as variables
+      - path: apps/*
   template:
     metadata:
-      name: '{{.name}}'
+      # basename is the name of the directory not the full path
+      name: '{{path.basename}}'
     spec:
       project: default
       source:
+        # source repo, in this example both repositories are the same
         repoURL: https://github.com/mariocalipo/argocd
         targetRevision: HEAD
-        path: main
-        kustomize:
-          image: kustomize/kustomize:v4.4.0
-          args:
-            - build
-            - .
+        # path to read manifests from, here it's the full path not only the name of the directory
+        path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{.name}}'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-      preSync:
-        - command:
-            - kubectl
-            - create
-            - namespace
-            - '{{.name}}'
+        # different namespaces named after the directories names to be used as destinations
+        namespace: '{{path.basename}}'
