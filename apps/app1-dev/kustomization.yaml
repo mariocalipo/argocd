@@ -5,14 +5,13 @@ replacements:
     source:
       kind: ConfigMap
       name: app1-us1-dev
-      apiVersion: v1
-      fieldRef:
-        fieldPath: data.environment
+    fieldRef:
+      fieldPath: data.environment
 resources:
   - ../../main/common/deployment.yaml
   - ../../main/common/service.yaml
   - ../../main/common/ingress.yaml
 configMapGenerator:
-  - name: app1-us1-dev
+  - name: app1-dev
     literals:
       - environment=us1-dev
