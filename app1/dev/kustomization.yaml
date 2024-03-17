@@ -4,3 +4,12 @@ resources:
   - ../../base
 nameSuffix: -dev
 namePrefix: app1-
+
+patches:
+  - target:
+      kind: Ingress
+      name: ingress
+    patch: |-
+      - op: replace
+        path: /spec/defaultBackend/service/name
+        value: app1-ingress-dev
