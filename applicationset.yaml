@@ -9,6 +9,8 @@ spec:
         revision: HEAD
         directories:
           - path: apps/app1/dev
+            metadata:
+              name: app1-dev
   template:
     metadata:
       labels:
