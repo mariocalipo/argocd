@@ -5,6 +5,6 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: ingress
+      name: app1-ingress-dev # checar
       port:
         number: 80
