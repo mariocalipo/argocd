@@ -11,11 +11,10 @@ spec:
       repoURL: https://github.com/mariocalipo/argocd.git
       revision: HEAD
       directories:
-      - path: apps/app1/us1/*
-      - path: apps/app2/us1/*
+      - path: apps/*
   template:
     metadata:
-      name: '{{.path.basename}}-{{.path.name}}-{{.path.dir}}'
+      name: '{{.path.basename}}'
     spec:
       project: "default"
       source:
