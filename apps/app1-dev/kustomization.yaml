@@ -9,9 +9,9 @@ vars:
     fieldref:
       fieldpath: data.environment
 resources:
-  - ../../common/deployment.yaml
-  - ../../common/service.yaml
-  - ../../common/ingress.yaml
+  - ../../main/common/deployment.yaml
+  - ../../main/common/service.yaml
+  - ../../main/common/ingress.yaml
 configMapGenerator:
   - name: app1-us1-dev
     literals:
