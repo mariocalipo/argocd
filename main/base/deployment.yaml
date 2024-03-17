@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: replace
+  name: deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: replace
+      app: deployment
   template:
     metadata:
       labels:
-        app: replace
+        app: deployment
     spec:
       imagePullSecrets:  # Add this section for image pull secrets
       - name: regcred
       containers:
-      - name: replace
-        image: replace
+      - name: deployment
+        image: deployment
         ports:
           - containerPort: 8080
         livenessProbe:      # Used by deployment controller
