@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - ../../../../main/base
 nameSuffix: -{{ .Environment.Name }}
-namePreffix: app1-
 commonLabels:
   app.kubernetes.io/name: app1
   app.kubernetes.io/part-of: my-apps
