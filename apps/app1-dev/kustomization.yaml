@@ -4,8 +4,8 @@ replacements:
   - path: ../../main/common
     source:
       kind: ConfigMap
-      name: app1-us1-dev
-    fieldRef:
+      name: app1-dev
+    fieldref:
       fieldPath: data.environment
 resources:
   - ../../main/common/deployment.yaml
