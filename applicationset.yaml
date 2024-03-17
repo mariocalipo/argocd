@@ -15,7 +15,7 @@ spec:
       - path: apps/app2/us1/*
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{.path.basename}}-{{.path.name}}-{{.path.dir}}'
     spec:
       project: "default"
       source:
