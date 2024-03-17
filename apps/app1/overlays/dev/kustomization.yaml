@@ -2,7 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../../../base
-patchesStrategicMerge:
-  - ingress.yaml
+patches:
+  - target:
+      kind: Ingress
+      name: ingress  # Update with the actual name of your Ingress
+      namespace: dev  # Specify the namespace if the Ingress is in a specific namespace
+    path: ingress.yaml  # Path to your patch file relative to the Kustomization file
 nameSuffix: -dev
 namePrefix: app1-
