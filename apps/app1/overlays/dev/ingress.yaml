@@ -6,5 +6,3 @@ spec:
   defaultBackend:
     service:
       name: app1-ingress-dev
-      port:
-        number: 80
