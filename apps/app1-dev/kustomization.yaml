@@ -6,13 +6,9 @@ vars:
       kind: ConfigMap
       name: app1-us1-dev
       apiVersion: v1
-      fieldref:
-        fieldpath: data.environment
+    fieldref:
+      fieldpath: data.environment
 resources:
-  - ../../common/deployment.yaml
-  - ../../common/service.yaml
-  - ../../common/ingress.yaml
-patchesStrategicMerge:
   - ../../common/deployment.yaml
   - ../../common/service.yaml
   - ../../common/ingress.yaml
