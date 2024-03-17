@@ -4,7 +4,3 @@ resources:
   - ../../../main/base
 nameSuffix: -dev
 namePrefix: app1-
-commonLabels:
-  app.kubernetes.io/name: app1
-  app.kubernetes.io/part-of: my-apps
-  app.kubernetes.io/managed-by: argocd
