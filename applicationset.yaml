@@ -18,11 +18,12 @@ spec:
       source:
         repoURL: https://github.com/mariocalipo/argocd.git
         targetRevision: HEAD
-        path: {{path}}
+        path: {{.Environment.Path}}
       destination:
         server: https://kubernetes.default.svc
-        namespace: {{namespace}}
+        namespace: {{.Environment.Namespace}}
       syncPolicy:
+        automated:
+          prune: true
         syncOptions:
-        - CreateNamespace=true
-
+          - CreateNamespace=true
