@@ -5,7 +5,7 @@ replacements:
     source:
       kind: ConfigMap
       name: app1-dev
-    fieldref:
+    fieldRef:
       fieldPath: data.environment
 resources:
   - ../../main/common/deployment.yaml
