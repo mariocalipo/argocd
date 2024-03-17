@@ -1,3 +1,4 @@
+apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: my-apps
@@ -6,23 +7,23 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - git:
-      repoURL: https://github.com/mariocalipo/argocd.git
-      revision: HEAD
-      directories:
-      - path: apps/app1/dev
+    - git:
+        repoURL: https://github.com/mariocalipo/argocd.git
+        revision: HEAD
+        directories:
+          - path: apps/app1/dev
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{.name}}' 
     spec:
       project: default
       source:
         repoURL: https://github.com/mariocalipo/argocd.git
         targetRevision: HEAD
-        path: '{{path.basename}}'
+        path: '{{.name}}' 
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{.path.basename}}'
+        namespace: '{{.name}}' 
       syncPolicy:
         syncOptions:
-        - CreateNamespace=true
+          - CreateNamespace=true
