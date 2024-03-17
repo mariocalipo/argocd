@@ -1,7 +1,0 @@
-- op: replace 
-  path: /metadata/name
-  value: app1-ingress-dev
-
-- op: replace 
-  path: /spec/defaultBackend/service/name
-  value: app1-ingress-dev
