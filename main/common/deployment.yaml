@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${environment}app
+  name: ${patch}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ${environment}app
+      app: ${patch}
   template:
     metadata:
       labels:
-        app: ${environment}app
+        app: ${patch}
     spec:
       imagePullSecrets:  # Add this section for image pull secrets
       - name: regcred
       containers:
-      - name: ${environment}app
-        image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-${environment}:latest
+      - name: ${patch}
+        image: ${patch}
         ports:
           - containerPort: 8080
         livenessProbe:      # Used by deployment controller
