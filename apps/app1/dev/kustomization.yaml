@@ -2,12 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../../main/base
-nameSuffix: -{{ .Environment.Name }}
+nameSuffix: -dev
+namePrefix: app1-
 commonLabels:
   app.kubernetes.io/name: app1
   app.kubernetes.io/part-of: my-apps
   app.kubernetes.io/managed-by: argocd
-configMapGenerator:
-  - name: app1-config
-    literals:
-      - environment={{ .Environment.Name }}
