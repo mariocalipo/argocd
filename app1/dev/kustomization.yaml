@@ -12,4 +12,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/defaultBackend/service/name
-        value: app1-in-dev
+        value: app1-ingress-dev
