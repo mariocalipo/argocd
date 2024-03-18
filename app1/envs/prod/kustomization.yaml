@@ -3,3 +3,9 @@ kind: Kustomization
 resources:
   - ../../base
 nameSuffix: -prod
+
+patches:
+  - target:
+      kind: Deployment
+      name: app1
+    patch: deployment-patch.yaml

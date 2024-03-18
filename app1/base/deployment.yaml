@@ -16,7 +16,7 @@ spec:
       - name: regcred
       containers:
       - name: app1
-        image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-dev:latest 
+        image: 
         ports:
           - containerPort: 8080
         livenessProbe:     

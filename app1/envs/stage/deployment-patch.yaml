@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  template:
+    spec:
+      containers:
+        - name: app1
+          image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-stage:latest
