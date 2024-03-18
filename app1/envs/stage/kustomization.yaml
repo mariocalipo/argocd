@@ -4,8 +4,5 @@ resources:
   - ../../base
 nameSuffix: -stage
 
-patches:
-  - target:
-      kind: Deployment
-      name: app1
-    patch: deployment-patch.yaml
+patchesStrategicMerge:
+  - deployment-patch.yaml
