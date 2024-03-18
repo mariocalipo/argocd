@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1-dev
+  name: app1
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app1-dev
+      app: app1
   template:
     metadata:
       labels:
-        app: app1-dev
+        app: app1
     spec:
       imagePullSecrets: 
       - name: regcred
       containers:
-      - name: app1-dev
+      - name: app1
         image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-dev:latest 
         ports:
           - containerPort: 8080
