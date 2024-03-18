@@ -11,7 +11,7 @@ spec:
       - path: app1/envs/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{item.application}}-{{path.basename}}'
     spec:
       project: default
       source:
