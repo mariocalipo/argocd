@@ -1,31 +1,31 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: app1-dev
 metadata:
-  name: deployment
+  name: app1-dev
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: deployment
+      app: app1-dev
   template:
     metadata:
       labels:
-        app: deployment
+        app: app1-dev
     spec:
-      imagePullSecrets:  # Add this section for image pull secrets
+      imagePullSecrets: 
       - name: regcred
       containers:
-      - name: deployment
-        image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-dev:latest # checar
+      - name: app1-dev
+        image: mariocalipo.jfrog.io/mariocalipo-docker-local/image-dev:latest 
         ports:
           - containerPort: 8080
-        livenessProbe:      # Used by deployment controller
+        livenessProbe:     
           httpGet:
             path: /health
             port: 8080
           initialDelaySeconds: 5
           periodSeconds: 5
-        readinessProbe:     # Used by Ingress/GCLB
+        readinessProbe:  
           httpGet:
             path: /health
             port: 8080
