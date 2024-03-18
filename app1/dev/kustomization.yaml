@@ -13,10 +13,3 @@ patches:
       - op: replace
         path: /spec/defaultBackend/service/name
         value: app1-in-dev
-  - target:
-      kind: Ingress
-      name: ingress
-    patch: |-
-      - op: replace
-        path: /metadata/name
-        value: app1-in-dev
