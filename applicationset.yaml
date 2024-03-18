@@ -26,3 +26,5 @@ spec:
           prune: true
           selfHeal: true
           forceSync: true 
+        syncOptions:
+          - CreateNamespace=true
