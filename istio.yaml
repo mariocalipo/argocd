@@ -6,10 +6,10 @@ metadata:
 spec:
   project: default  # ArgoCD project to which the application belongs
   source:
-    repoURL: https://charts.helm.sh/stable  # Official Helm charts repository URL for Istio
+    repoURL: https://istio-release.storage.googleapis.com/charts  # Official Helm charts repository URL for Istio
     chart: istio-base  # Name of the Istio base chart in the repository
     version: 1.16.1  # Version of the Istio chart to install
-    targetRevision: main  # Branch or commit hash in the repository (not needed for official Helm charts repository)
+    targetRevision: default  # Branch or commit hash in the repository (not needed for official Helm charts repository)
     helm:
       valueFiles:
         - values.yaml  # Path to your values.yaml file for Istio configuration
