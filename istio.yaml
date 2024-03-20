@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mariocalipo/argocd
+    targetRevision: main  # Use the desired branch or commit hash
+    path: istio-chart
+    helm:
+      valueFiles:
+        - istio-chart/values.yaml  # Path to your values.yaml file in the Helm chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system  # Target namespace for Istio deployment
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      forceSync: true 
+    syncOptions:
+      - CreateNamespace=true
