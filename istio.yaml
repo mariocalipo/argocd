@@ -11,7 +11,7 @@ spec:
     path: istio-chart
     helm:
       valueFiles:
-        - istio-chart/values.yaml  # Path to your values.yaml file in the Helm chart
+        - values.yaml  # Path to your values.yaml file in the Helm chart
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system  # Target namespace for Istio deployment
