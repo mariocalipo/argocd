@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: istio-proxy
-          image: istio/proxyv2 # The image will automatically update each time the pod starts.
+          image: docker.io/istio/proxyv2:1.20.4 # The image will automatically update each time the pod starts.
           resources:
             limits:
               cpu: 2000m
