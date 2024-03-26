@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: asm-gateway
+  namespace: xyz-asm-gateway
+spec:
+  selector:
+    istio: ingressgateway-neg
+  servers:
+  - port:
+      number: 443
+      name: https-access
+      protocol: HTTPS
+    hosts:
+    - "*"
+    # TODO: Modify the cert for each environment.  
+    # The cert should be in the same
+    # namespace as this gateway (i.e. asm-gateway)
+    tls:
+      mode: SIMPLE
+      credentialName: asm-gateway
